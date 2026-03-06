@@ -1,60 +1,404 @@
-<!DOCTYPE HTML>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcostasi</title>
+    <meta name="description"
+        content="Anderson Costa — Senior Embedded Systems Engineer with 28+ years of experience in low-level development, communication protocols, and agricultural/industrial automation.">
+    <title>Anderson Costa — Senior Embedded Systems Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700' rel='stylesheet'
-        type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,500,600,700' rel='stylesheet' type='text/css'>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/socicon.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/animate.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/layout.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-    <div class="container animated fadeInUp">
-        <div class="text-center box">
-            <a href="https://arcostasi.github.io/"><img src="assets/img/me.jpg" class="img-circle" width="190" height="190"
-                alt=""/></a>
-            <h1>Hi, I'm <span class="semibold">Anderson Costa</span></h1>
-            <p>I’m a software developer with +20 years experience in software development living in Maringá - PR, Brasil.</p>
-            <p>I studied Industrial Automation at Centro Universitario de Maringá and coursed electronics technician at Maringá.</p>
-            <p>Currently, I'm working on automation and embedded systems at
-                <a href="http://www.ar2tech.com.br/" target="_blank">AR2 Technology</a>.
-            </p>
-            <p>In my spare time I love
-                <a href="https://soundcloud.com/arcostasi" target="_blank">playing music</a> and try dedicated myself to my
-                <a href="http://www.github.com/arcostasi/" target="_blank">personal projects</a>.
-            </p>
-            <p>You can contact me <a href="https://www.linkedin.com/in/arcostasi/" target="_blank">here</a>.</p>
-            <p class="contactto">
-                <a class="btn-continue" href="http://www.github.com/arcostasi/">Continue to my <i
-                    class="socicon-github"></i><span
-                    class="glyphicon glyphicon-chevron-right"></span></a>
-            </p>
-            <ul class="list-unstyled list-inline social-icons">
-                <li><a href="https://www.facebook.com/" target="_blank"><i
-                    class="socicon-facebook"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/arcostasi/" target="_blank"><i
-                    class="socicon-linkedin"></i></a></li>
-                <li><a href="https://twitter.com/arcostasi" target="_blank"><i
-                    class="socicon-twitter"></i></a></li>
-                <li><a href="https://soundcloud.com/arcostasi" target="_blank"><i
-                    class="socicon-soundcloud"></i></a></li>
-                <li><a href="https://www.instagram.com/arcostasi/" target="_blank"><i
-                    class="socicon-instagram"></i></a></li>
-                <li><a href="https://www.youtube.com/user/Arcostasi" target="_blank"><i
-                    class="socicon-youtube"></i></a></li>
-                <li><a href="https://github.com/arcostasi" target="_blank"><i
-                    class="socicon-github"></i></a></li>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo"><span class="logo-bracket">&lt;</span>arcostasi<span
+                    class="logo-bracket">/&gt;</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="terminal-btn" id="open-terminal-btn">&gt;_ Terminal</button>
+            <button class="nav-toggle" id="nav-toggle"
+                aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-inner">
+            <div class="hero-tag reveal"><span class="dot dot-green"></span> Available for consulting</div>
+            <h1 class="reveal">Anderson Costa</h1>
+            <h2 class="reveal">Senior Embedded Systems Developer</h2>
+            <p class="hero-desc reveal">Systems programming, communication protocols, and firmware architecture for
+                agricultural &amp; industrial automation. Coding since <strong>1997</strong>.</p>
+            <div class="hero-meta reveal">
+                <span class="meta-item"><span class="meta-label">Based in</span> Maringá, PR — Brazil</span>
+                <span class="divider">·</span>
+                <span class="meta-item"><span class="meta-label">Speciality</span> ISOBUS · J1939 · CAN</span>
+                <span class="divider">·</span>
+                <span class="meta-item"><span class="meta-label">Experience</span> 28+ years</span>
+            </div>
+            <div class="hero-cta reveal">
+                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+                <a href="https://linkedin.com/in/arcostasi" target="_blank" rel="noopener"
+                    class="btn btn-secondary">LinkedIn</a>
+                <button class="btn btn-ghost" id="hero-terminal-btn"><span class="mono">&gt;_</span> Try the
+                    Terminal</button>
+            </div>
+        </div>
+        <div class="hero-bg-code" aria-hidden="true">
+            <pre class="code-watermark"><span class="cw-kw">void</span> <span class="cw-fn">can_tx_handler</span>() {
+  CAN_TxHeaderTypeDef hdr;
+  hdr.StdId = <span class="cw-str">0x18FEF100</span>;
+  hdr.DLC = <span class="cw-num">8</span>;
+  HAL_CAN_AddTxMessage(
+    &amp;hcan1, &amp;hdr,
+    txData, &amp;mailbox);
+}
+
+<span class="cw-kw">void</span> <span class="cw-fn">j1939_parse_pgn</span>(
+  uint32_t pgn,
+  uint8_t *data) {
+  <span class="cw-kw">switch</span>(pgn) {
+    <span class="cw-kw">case</span> PGN_EEC1:
+      eec1.rpm =
+       (data[4]|data[3]&lt;&lt;<span class="cw-num">8</span>) * 0.125f;
+    <span class="cw-kw">break</span>;
+  }
+}</pre>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">01</span>
+                <h3>About</h3>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>I'm a Senior Software Developer with a deep focus on <strong>Embedded Systems</strong> and
+                        software development. My career spans nearly three decades, from the early days of PIC
+                        assembly to modern C/C++ on ARM Cortex-M microcontrollers.</p>
+                    <p>I specialize in <strong>agricultural and industrial automation</strong>, building robust firmware
+                        and communication stacks for environments where reliability is not optional. My work regularly
+                        involves CAN-based protocols at the hardware-software boundary — where bugs have physical
+                        consequences.</p>
+                    <p>When I'm not deep in register-level debugging, I enjoy building open-source simulation tools for
+                        the
+                        embedded community and mentoring developers entering the systems programming world.</p>
+                </div>
+                <div class="about-stats reveal">
+                    <div class="stat-card"><span class="stat-number">28<span class="stat-plus">+</span></span><span
+                            class="stat-label">Years coding</span></div>
+                    <div class="stat-card"><span class="stat-number">15<span class="stat-plus">+</span></span><span
+                            class="stat-label">Years in embedded</span></div>
+                    <div class="stat-card"><span class="stat-number">30<span class="stat-plus">+</span></span><span
+                            class="stat-label">Repos &amp; contributions</span></div>
+                    <div class="stat-card"><span class="stat-number">&#x221E;</span><span class="stat-label">Coffee
+                            consumed</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">02</span>
+                <h3>Skills</h3>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg></div>
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>C / C++ <span class="skill-level">Advanced</span></li>
+                        <li>Python <span class="skill-level">Advanced</span></li>
+                        <li>Node.js <span class="skill-level">Intermediate</span></li>
+                        <li>Shell / Bash <span class="skill-level">Advanced</span></li>
+                        <li>HTML / CSS / JS <span class="skill-level">Intermediate</span></li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <rect x="9" y="9" width="6" height="6" />
+                            <line x1="9" y1="2" x2="9" y2="4" />
+                            <line x1="15" y1="2" x2="15" y2="4" />
+                            <line x1="9" y1="20" x2="9" y2="22" />
+                            <line x1="15" y1="20" x2="15" y2="22" />
+                            <line x1="2" y1="9" x2="4" y2="9" />
+                            <line x1="2" y1="15" x2="4" y2="15" />
+                            <line x1="20" y1="9" x2="22" y2="9" />
+                            <line x1="20" y1="15" x2="22" y2="15" />
+                        </svg></div>
+                    <h4>Embedded</h4>
+                    <ul>
+                        <li>Embedded Linux <span class="skill-level">Intermediate</span></li>
+                        <li>FreeRTOS <span class="skill-level">Intermediate</span></li>
+                        <li>Firmware Architecture <span class="skill-level">Advanced</span></li>
+                        <li>HAL / LL / Bare Metal <span class="skill-level">Advanced</span></li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                        </svg></div>
+                    <h4>Protocols</h4>
+                    <ul>
+                        <li>ISOBUS (ISO 11783) <span class="skill-level">Advanced</span></li>
+                        <li>SAE J1939 <span class="skill-level">Advanced</span></li>
+                        <li>CAN / CANopen <span class="skill-level">Advanced</span></li>
+                        <li>I2C / SPI / UART <span class="skill-level">Advanced</span></li>
+                        <li>LIN / FlexRay / MIL <span class="skill-level">Intermediate</span></li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <polyline points="8 21 12 17 16 21" />
+                        </svg></div>
+                    <h4>Hardware</h4>
+                    <ul>
+                        <li>ARM Cortex-M</li>
+                        <li>STM32 (F / H / U series)</li>
+                        <li>ESP32 / ESP-IDF</li>
+                        <li>XMC 47XX / 48XX (Infineon)</li>
+                        <li>Atmel AVR / Microchip PIC</li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                        </svg></div>
+                    <h4>Tools &amp; Dev</h4>
+                    <ul>
+                        <li>Vector CANoe / CANalyzer</li>
+                        <li>Git / Docker / CMake</li>
+                        <li>PCAN-Explorer / Oscilloscope / Logic Analyzer</li>
+                        <li>VSCode / GCC / Clang / LLVM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">03</span>
+                <h3>Experience</h3>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2016 — Present</div>
+                    <div class="timeline-content">
+                        <h4>Senior Embedded Systems Developer</h4>
+                        <span class="timeline-company">Agricultural &amp; Industrial Automation</span>
+                        <p>Leading firmware architecture and protocol stack development for ISOBUS-compliant
+                            agricultural machinery. Designed and implemented ISO 11783 / SAE J1939 communication layers,
+                            device drivers
+                            for CAN-bus peripherals, and field-proven RTOS integrations on ARM Cortex-M platforms.</p>
+                        <div class="timeline-tags">
+                            <span>C/C++</span><span>XMC
+                                47XX</span><span>ISOBUS</span><span>J1939</span><span>STM32</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2008 — 2015</div>
+                    <div class="timeline-content">
+                        <h4>Software Developer</h4>
+                        <span class="timeline-company">Industrial Automation Projects</span>
+                        <p>Developed firmware and communication drivers for industrial control systems. Worked
+                            with Modbus, RS-485, and TCP/UDP networks. Implemented robust HAL layers and bare-metal
+                            drivers
+                            for Microchip and Atmel microcontrollers.</p>
+                        <div class="timeline-tags"><span>C</span><span>Bare
+                                Metal</span><span>RS-485</span><span>Modbus</span><span>Microchip</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">1997 — 2008</div>
+                    <div class="timeline-content">
+                        <h4>Software Developer</h4>
+                        <span class="timeline-company">General Software Development</span>
+                        <p>Started programming in Clipper and Pascal. Progressively moved through Delphi, C, and
+                            early web technologies. Built desktop applications, database tools, and early embedded
+                            projects — laying the foundation for a deep systems-level career.</p>
+                        <div class="timeline-tags">
+                            <span>C</span><span>Clipper</span><span>Delphi</span><span>Pascal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">04</span>
+                <h3>Projects</h3>
+            </div>
+            <div class="projects-grid">
+                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top">
+                        <svg class="project-folder" width="38" height="38" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.2">
+                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
+                        </svg>
+                        <svg class="project-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                    </div>
+                    <h4>CAN Bus Tools</h4>
+                    <p>Utilities for decoding, monitoring, and simulating CAN traffic. Supports J1939 PGN parsing, DBC
+                        file loading, and live frame inspection over PCAN and SocketCAN adapters.</p>
+                    <div class="project-tags"><span>Python</span><span>C</span><span>CAN</span><span>J1939</span></div>
+                </a>
+                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top">
+                        <svg class="project-folder" width="38" height="38" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.2">
+                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
+                        </svg>
+                        <svg class="project-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                    </div>
+                    <h4>Embedded Drivers</h4>
+                    <p>A collection of hardware-agnostic device drivers in C for sensors, displays, and communication
+                        modules. Targets STM32 and ESP32 platforms with HAL and bare-metal variants.</p>
+                    <div class="project-tags"><span>C</span><span>STM32</span><span>ESP32</span><span>HAL</span></div>
+                </a>
+                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top">
+                        <svg class="project-folder" width="38" height="38" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.2">
+                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
+                        </svg>
+                        <svg class="project-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                    </div>
+                    <h4>Protocol Implementations</h4>
+                    <p>Experimental J1939 and ISOBUS (ISO 11783) protocol stacks, designed for embedded targets with a
+                        minimal footprint and easy portability across MCU families.</p>
+                    <div class="project-tags"><span>C</span><span>ISOBUS</span><span>J1939</span><span>FreeRTOS</span>
+                    </div>
+                </a>
+            </div>
+            <div class="projects-footer reveal">
+                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-ghost">View all on
+                    GitHub &#x2192;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">05</span>
+                <h3>Contact</h3>
+            </div>
+            <div class="contact-wrapper reveal">
+                <p class="contact-lead">Interested in working together, discussing embedded systems, or just saying hi?
+                    Reach out through any of the channels below.</p>
+                <div class="contact-links">
+                    <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="contact-item">
+                        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg></div>
+                        <div class="contact-info"><span class="contact-label">GitHub</span><span
+                                class="contact-value">github.com/arcostasi</span></div>
+                    </a>
+                    <a href="https://linkedin.com/in/arcostasi" target="_blank" rel="noopener" class="contact-item">
+                        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg></div>
+                        <div class="contact-info"><span class="contact-label">LinkedIn</span><span
+                                class="contact-value">linkedin.com/in/arcostasi</span></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-inner">
+            <span class="nav-logo"><span class="logo-bracket">&lt;</span>arcostasi<span
+                    class="logo-bracket">/&gt;</span></span>
+            <p class="footer-copy">Designed &amp; built by Anderson Costa &middot; 2026</p>
+            <button class="footer-terminal-btn" id="footer-terminal-btn">&gt;_ terminal</button>
+        </div>
+    </footer>
+
+    <!-- TERMINAL MODAL -->
+    <div id="terminal-modal" role="dialog" aria-modal="true" aria-label="Interactive Terminal">
+        <div id="terminal-modal-inner">
+            <div id="terminal-titlebar">
+                <div class="terminal-dots">
+                    <span class="tdot tdot-red"></span>
+                    <span class="tdot tdot-yellow"></span>
+                    <span class="tdot tdot-green"></span>
+                </div>
+                <span class="terminal-title">arcostasi@embedded-node:~</span>
+                <button id="close-terminal-btn" aria-label="Close terminal">&times;</button>
+            </div>
+            <div id="terminal-container">
+                <div id="output"></div>
+                <div id="input-line">
+                    <span class="prompt"><span class="prompt-user">arcostasi</span><span class="prompt-at">@</span><span
+                            class="prompt-host">embedded-node:~</span><span class="prompt-sign">#</span></span>
+                    <input type="text" id="command-input" autocomplete="off" spellcheck="false"
+                        aria-label="Terminal command input">
+                </div>
+            </div>
         </div>
     </div>
-    <footer class="text-center animated bounceInUp">
-        <a href="http://arcostasi.com" target="_blank"><img
-            src="assets/img/logo-arcostasi.png" class="logo" width="270" height="150" alt=""/></a>
-    </footer>
+    <div id="modal-backdrop"></div>
+
+    <script src="terminal.js"></script>
+    <script src="dashboard.js"></script>
 </body>
+
 </html>
