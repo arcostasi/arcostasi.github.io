@@ -7,64 +7,6 @@ const inputLine = document.getElementById('input-line');
 const modal = document.getElementById('terminal-modal');
 const backdrop = document.getElementById('modal-backdrop');
 
-// ─── Profile data ────────────────────────────────────────────────────────────
-const PROFILE = {
-    whoami: [
-        "Hi, I'm Anderson Costa (Arcostasi).",
-        "Senior Software Developer specializing in Embedded Systems,",
-        "low-level development, and communication protocols for",
-        "agricultural and industrial automation.",
-        "",
-        "Age: 45 | Coding since: 1997 | Based in: Maringá - PR, Brazil"
-    ],
-    skills: [
-        "─── TECHNICAL SKILLS ───────────────────────",
-        "Languages : C / C++, Python, Shell, HTML/CSS/JS",
-        "Embedded  : Embedded Linux, FreeRTOS, Firmware arch, HAL/LL",
-        "Protocols : ISOBUS (ISO 11783), SAE J1939, CAN / CANopen, LIN",
-        "Hardware  : STM32, ESP32, XMC, Microchip",
-        "Tools     : Vector CANoe, PCAN-Explorer, Git, Docker, CMake"
-    ],
-    projects: [
-        "─── FEATURED PROJECTS ──────────────────────",
-        "🛰️  CAN Bus Tools      — Utilities for CAN monitoring & J1939 parsing",
-        "⚙️  Embedded Drivers   — Hardware-agnostic drivers for STM32 / ESP32",
-        "🔧 Protocol Impl.     — J1939 / ISOBUS stack experiments and demos",
-        "",
-        "(More projects at github.com/arcostasi)"
-    ],
-    contact: [
-        "─── CONTACT ────────────────────────────────",
-        "GitHub  : <a href='https://github.com/arcostasi' target='_blank'>https://github.com/arcostasi</a>",
-        "LinkedIn: <a href='https://linkedin.com/in/arcostasi' target='_blank'>https://linkedin.com/in/arcostasi</a>"
-    ],
-    help: [
-        "Available commands:",
-        "  whoami    — Professional summary",
-        "  skills    — Technical skills",
-        "  projects  — Featured projects",
-        "  contact   — Contact information",
-        "  clear     — Clear terminal",
-        "  exit      — Close terminal",
-        "  help      — Show this message"
-    ]
-};
-
-const BOOT_SEQUENCE = [
-    "ARCOSTASI BIOS  Date 04/21/97  Ver 1.0",
-    "CPU: ARM Cortex-M7 @ 480 MHz",
-    "Memory Test: 1024K OK",
-    "",
-    "Initializing Field Protocols...",
-    "Loading ISO 11783 (ISOBUS) Stack... OK",
-    "Loading SAE J1939 Handlers......... OK",
-    "CAN / LIN Interfaces............... [ONLINE]",
-    "RTOS Kernel loaded.",
-    "",
-    "Welcome to ARCOS v1.0",
-    "Type 'help' to see available commands."
-];
-
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 let booted = false;
 
@@ -73,55 +15,32 @@ function scrollToBottom() {
     if (tc) tc.scrollTop = tc.scrollHeight;
 }
 
-async function typePrint(text, lineClass = '', speed = 10) {
+async function typePrint(text, lineClass = '', speed = 5) {
     const p = document.createElement('div');
     p.className = `output-line ${lineClass}`;
     outputDiv.appendChild(p);
-    if (text === '') { p.innerHTML = '&nbsp;'; return; }
-    if (text.includes('<a') || speed === 0) { p.innerHTML = text; scrollToBottom(); return; }
+
+    if (text === '') {
+        p.innerHTML = '&nbsp;';
+        return;
+    }
+
+    // Check if the text is meant to be parsed as HTML (contains a tag)
+    const isHtml = text.includes('<') && text.includes('>');
+
+    if (isHtml || speed === 0) {
+        // Render instantly using innerHTML so the tags aren't broken by the typewriter effect
+        p.innerHTML = text;
+        scrollToBottom();
+        return;
+    }
+
+    // Typing effect for plain text
     for (let i = 0; i < text.length; i++) {
         p.textContent += text.charAt(i);
         scrollToBottom();
         if (text.charAt(i) !== ' ') await new Promise(r => setTimeout(r, speed));
     }
-}
-
-async function runBootSequence() {
-    inputLine.style.display = 'none';
-    for (const line of BOOT_SEQUENCE) {
-        await typePrint(line, '', 14);
-        await new Promise(r => setTimeout(r, 60));
-    }
-    inputLine.style.display = 'flex';
-    commandInput.focus();
-}
-
-async function processCommand(cmd) {
-    const raw = cmd.trim();
-    const lower = raw.toLowerCase();
-
-    const echo = document.createElement('div');
-    echo.className = 'output-line command-echo';
-    echo.innerHTML = `<span class="prompt-user">arcostasi</span><span class="prompt-at">@</span><span class="prompt-host">embedded-node:~</span><span class="prompt-sign">#</span> ${raw}`;
-    outputDiv.appendChild(echo);
-
-    if (lower === '') { scrollToBottom(); return; }
-    if (lower === 'clear') { outputDiv.innerHTML = ''; return; }
-    if (lower === 'exit') { closeTerminal(); return; }
-
-    commandInput.disabled = true;
-
-    if (PROFILE[lower]) {
-        for (const line of PROFILE[lower]) {
-            await typePrint(line, '', 4);
-        }
-    } else {
-        await typePrint(`Command not found: '${raw}'. Type 'help' for available commands.`, '', 4);
-    }
-
-    commandInput.disabled = false;
-    commandInput.focus();
-    scrollToBottom();
 }
 
 // ─── Modal open / close ──────────────────────────────────────────────────────
@@ -158,10 +77,183 @@ commandInput.addEventListener('keydown', function (e) {
         const cmd = this.value;
         this.value = '';
         processCommand(cmd);
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (OS_STATE.history.length > 0 && OS_STATE.historyIndex > 0) {
+            OS_STATE.historyIndex--;
+            this.value = OS_STATE.history[OS_STATE.historyIndex];
+        }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (OS_STATE.historyIndex < OS_STATE.history.length - 1) {
+            OS_STATE.historyIndex++;
+            this.value = OS_STATE.history[OS_STATE.historyIndex];
+        } else {
+            OS_STATE.historyIndex = OS_STATE.history.length;
+            this.value = '';
+        }
+    } else if (e.key === 'Tab') {
+        e.preventDefault();
+        handleAutocomplete(this);
     }
 });
 
 // Focus input when clicking anywhere inside the terminal area
-document.getElementById('terminal-container').addEventListener('click', () => {
+document.getElementById('terminal-container').addEventListener('click', (e) => {
+    if (!isEditorOpen && e.target.id !== 'close-terminal-btn') {
+        commandInput.focus();
+    } else if (isEditorOpen && editorMode === 'INSERT') {
+        editorTextarea.focus();
+    }
+});
+
+// ─── Minimalist Vi Editor ────────────────────────────────────────────────────
+let isEditorOpen = false;
+let editorMode = 'NORMAL';
+let currentEditorFile = '';
+
+const editorView = document.createElement('div');
+editorView.id = 'editor-view';
+
+const editorTextarea = document.createElement('textarea');
+editorTextarea.id = 'editor-textarea';
+editorTextarea.spellcheck = false;
+
+const editorStatusBar = document.createElement('div');
+editorStatusBar.id = 'editor-status-bar';
+
+const editorCommandInput = document.createElement('input');
+editorCommandInput.id = 'editor-command-input';
+editorCommandInput.autocomplete = 'off';
+editorCommandInput.spellcheck = false;
+
+editorView.appendChild(editorTextarea);
+editorView.appendChild(editorStatusBar);
+editorView.appendChild(editorCommandInput);
+document.getElementById('terminal-container').appendChild(editorView);
+
+window.openEditor = function (filePath, currentContent) {
+    isEditorOpen = true;
+    editorMode = 'NORMAL';
+    currentEditorFile = filePath;
+
+    document.getElementById('output').style.display = 'none';
+    document.getElementById('input-line').style.display = 'none';
+    editorView.style.display = 'flex';
+
+    editorTextarea.value = currentContent;
+    updateEditorStatus();
+
+    editorTextarea.focus();
+};
+
+function updateEditorStatus() {
+    if (editorMode === 'COMMAND') return;
+    let modeText = editorMode === 'INSERT' ? '-- INSERT --' : `"${currentEditorFile}"`;
+    let hints = editorMode === 'INSERT' ? '[Esc] Normal' : '[i] Insert | [:w] Save | [:q] Quit';
+    editorStatusBar.innerHTML = `<span>${modeText}</span><span style="opacity: 0.7; font-weight: normal; font-size: 0.75rem;">${hints}</span>`;
+}
+
+function closeEditor() {
+    isEditorOpen = false;
+    document.getElementById('output').style.display = 'block';
+    document.getElementById('input-line').style.display = 'flex';
+    editorView.style.display = 'none';
+
+    commandInput.disabled = false;
     commandInput.focus();
+    scrollToBottom();
+}
+
+function saveEditorFile() {
+    const lastSlashIndex = currentEditorFile.lastIndexOf('/');
+    const parentDir = lastSlashIndex > 0 ? currentEditorFile.substring(0, lastSlashIndex) : '/';
+    const fileName = currentEditorFile.substring(lastSlashIndex + 1);
+
+    if (!VFS[parentDir]) {
+        VFS[parentDir] = { type: 'dir', contents: [] };
+    }
+
+    VFS[currentEditorFile] = {
+        type: 'file',
+        data: editorTextarea.value.split('\n')
+    };
+
+    if (VFS[parentDir] && !VFS[parentDir].contents.includes(fileName)) {
+        VFS[parentDir].contents.push(fileName);
+    }
+
+    if (typeof syncFileSystem === 'function') syncFileSystem();
+}
+
+editorTextarea.addEventListener('keydown', (e) => {
+    if (editorMode === 'NORMAL') {
+        let key = e.key;
+        if (key === 'i' || key === 'I') {
+            e.preventDefault();
+            editorMode = 'INSERT';
+            updateEditorStatus();
+        } else if (key === ':') {
+            e.preventDefault();
+            editorMode = 'COMMAND';
+            editorStatusBar.style.display = 'none';
+            editorCommandInput.style.display = 'block';
+            editorCommandInput.value = ':';
+            editorCommandInput.focus();
+        } else if (/^[a-zA-Z0-9!"#$%&'()*+,\-./;=?@[\\\]^_`{|}~]$/.test(key) && !e.ctrlKey && !e.altKey && !e.metaKey) {
+            e.preventDefault(); // Block typing
+        } else if (key === 'Enter' || key === 'Backspace' || key === 'Delete' || key === 'Tab') {
+            e.preventDefault(); // Block editing keys
+        }
+    } else if (editorMode === 'INSERT') {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            editorMode = 'NORMAL';
+            updateEditorStatus();
+        } else if (e.key === 'Tab') {
+            e.preventDefault();
+            const start = editorTextarea.selectionStart;
+            const end = editorTextarea.selectionEnd;
+            editorTextarea.value = editorTextarea.value.substring(0, start) + "    " + editorTextarea.value.substring(end);
+            editorTextarea.selectionStart = editorTextarea.selectionEnd = start + 4;
+        }
+    }
+});
+
+editorCommandInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        editorMode = 'NORMAL';
+        editorCommandInput.style.display = 'none';
+        editorStatusBar.style.display = 'flex';
+        updateEditorStatus();
+        editorTextarea.focus();
+    } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const cmd = editorCommandInput.value.substring(1).trim();
+
+        if (cmd === 'w') {
+            saveEditorFile();
+            editorMode = 'NORMAL';
+            editorCommandInput.style.display = 'none';
+            editorStatusBar.style.display = 'flex';
+            editorStatusBar.innerHTML = `<span>"${currentEditorFile}" [Written]</span>`;
+            editorTextarea.focus();
+        } else if (cmd === 'q' || cmd === 'q!') {
+            closeEditor();
+        } else if (cmd === 'wq' || cmd === 'x') {
+            saveEditorFile();
+            closeEditor();
+        } else {
+            editorCommandInput.value = ':';
+            editorMode = 'NORMAL';
+            editorCommandInput.style.display = 'none';
+            editorStatusBar.style.display = 'flex';
+            editorStatusBar.innerHTML = `<span>Not an editor command: ${cmd}</span>`;
+            editorTextarea.focus();
+        }
+    } else if (e.key === 'Backspace' && editorCommandInput.value === ':') {
+        // Prevent deleting the colon
+        e.preventDefault();
+    }
 });

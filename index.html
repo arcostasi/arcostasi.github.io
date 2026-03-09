@@ -206,6 +206,70 @@
         </div>
     </section>
 
+    <!-- CODE REVIEW SIMULATOR -->
+    <section id="code-review">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">02.5</span>
+                <h3>Code Review</h3>
+            </div>
+            <div class="cr-wrapper reveal">
+                <div class="cr-sidebar">
+                    <h4>Simulate a Code Review</h4>
+                    <p>I frequently review PRs addressing race conditions, memory leaks, and architectural flaws in
+                        embedded C/C++ projects.</p>
+                    <p>Click below to reveal a subtle bug in this snippet of C++ code, similar to those found in
+                        multi-threaded firmware stacks.</p>
+                    <button id="btn-run-review" class="btn btn-primary">Run Code Review</button>
+                </div>
+                <div class="cr-editor">
+                    <div class="cr-window-top">
+                        <div class="terminal-dots">
+                            <span class="tdot tdot-red"></span>
+                            <span class="tdot tdot-yellow"></span>
+                            <span class="tdot tdot-green"></span>
+                        </div>
+                        <span class="cr-file-name">sensors/imu_driver.cpp</span>
+                    </div>
+                    <div class="cr-code-container">
+                        <pre class="mono cr-code">
+<span class="cw-kw">void</span> <span class="cw-fn">readImuData</span>(<span class="cw-kw">void</span>* arg) {
+    ImuSensor* sensor = <span class="cw-kw">static_cast</span>&lt;ImuSensor*&gt;(arg);
+    <span class="cw-kw">while</span>(<span class="cw-num">1</span>) {
+        <span class="cw-kw">if</span> (sensor-&gt;isDataReady()) {
+            uint8_t buffer[<span class="cw-num">64</span>];
+            sensor-&gt;readRegisters(buffer);
+            
+            xSemaphoreTake(sensor-&gt;mutex, portMAX_DELAY);
+            <span class="cw-fn">memcpy</span>(sensor-&gt;sharedBuffer, buffer, <span class="cw-num">64</span>);
+            xSemaphoreGive(sensor-&gt;mutex);
+            
+            <span class="cr-line pos-rel" id="cr-fault-line">sensor-&gt;notifySubscribers();</span>
+        }
+        vTaskDelay(pdMS_TO_TICKS(<span class="cw-num">10</span>));
+    }
+}
+</pre>
+                        <!-- Tooltips that fade in on review -->
+                        <div class="cr-comment" id="cr-comment-1">
+                            <div class="cr-comment-header">
+                                <span class="cr-reviewer">@arcostasi</span>
+                                <span class="cr-badge">Senior Review</span>
+                            </div>
+                            <p><strong>Race Condition Risk:</strong> <code>notifySubscribers()</code> is called outside
+                                the mutex lock. Subscribers might start reading <code>sharedBuffer</code> while another
+                                thread modifies it.</p>
+                            <div class="cr-suggestion">
+                                <span class="cr-sugg-title">Suggested fix:</span>
+                                Move this inside the lock, or better, pass the data via a thread-safe Queue instead of a
+                                shared buffer to avoid long mutex holds during notifications.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- EXPERIENCE -->
     <section id="experience">
         <div class="section-inner">
@@ -364,6 +428,15 @@
 
     <!-- FOOTER -->
     <footer id="footer">
+        <div class="metrics-bar" id="performance-metrics" aria-label="Performance Metrics">
+            <span class="metric-item">Load: <span id="metric-load">--ms</span></span>
+            <span class="metric-divider">|</span>
+            <span class="metric-item">Size: <span id="metric-size">--kb</span></span>
+            <span class="metric-divider">|</span>
+            <span class="metric-item">Deps: 0 (Vanilla)</span>
+            <span class="metric-divider">|</span>
+            <span class="metric-item">Status: <span class="metric-status-ok">Optimal</span></span>
+        </div>
         <div class="footer-inner">
             <span class="nav-logo"><span class="logo-bracket">&lt;</span>arcostasi<span
                     class="logo-bracket">/&gt;</span></span>
@@ -397,6 +470,9 @@
     </div>
     <div id="modal-backdrop"></div>
 
+    <script src="profile.js"></script>
+    <script src="vfs.js"></script>
+    <script src="arcos.js"></script>
     <script src="terminal.js"></script>
     <script src="dashboard.js"></script>
 </body>
