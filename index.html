@@ -211,21 +211,34 @@ HAL_CAN_AddTxMessage(
     <section id="projects">
         <div class="section-inner">
             <div class="section-header reveal"><span class="section-label">05</span><h3>Selected projects</h3></div>
+            <p class="projects-intro reveal">Four different angles on software and hardware: an Arduino desktop simulator, an xBase compiler, a 6502 computer lab, and an ESP32 console build.</p>
             <div class="projects-grid">
-                <a href="https://github.com/arcostasi/esp32-javatari-embedded" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-card-top"><span class="project-index">01 / EMULATION</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-                    <h4>ESP32 Javatari Embedded</h4><p>An Atari 2600 emulator built into an Atari CX40 joystick with an ESP32.</p><div class="project-tags"><span>ESP32</span><span>C++</span><span>Embedded</span></div>
-                </a>
                 <a href="https://github.com/arcostasi/avr8js-electron-playground" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-card-top"><span class="project-index">02 / SIMULATION</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-                    <h4>AVR8js Electron Playground</h4><p>An Electron playground built around AVR8js and Wokwi Elements.</p><div class="project-tags"><span>TypeScript</span><span>Electron</span><span>AVR</span></div>
+                    <div class="project-card-top"><span class="project-index">01 / DESKTOP SIM</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>AVR8js Electron Playground</h4>
+                    <p>An offline Arduino simulator with a visual circuit editor, live peripherals and diagnostics. Its README includes screenshots, a roadmap, backlog and performance smoke checks.</p>
+                    <div class="project-tags"><span>TypeScript</span><span>Electron</span><span>AVR8js</span></div>
                 </a>
-                <a href="https://github.com/arcostasi/my-wokwi-projects" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-card-top"><span class="project-index">03 / PROTOTYPING</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-                    <h4>My Wokwi Projects</h4><p>Arduino experiments prototyped with the Wokwi online simulator.</p><div class="project-tags"><span>Arduino</span><span>C++</span><span>Wokwi</span></div>
+                <a href="https://github.com/arcostasi/harbour-rust" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top"><span class="project-index">02 / COMPILER</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>Harbour Rust</h4>
+                    <p>An independent Rust compiler project for CA-Clipper/Harbour compatibility, with a C backend, documented tests, CI and pre-releases.</p>
+                    <div class="project-tags"><span>Rust</span><span>Compiler</span><span>CI</span></div>
+                </a>
+                <a href="https://github.com/arcostasi/6502-labsim" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top"><span class="project-index">03 / CPU LAB</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>6502 Laboratory Simulator</h4>
+                    <p>An interactive MOS 6502 computer with a built-in assembler, live bus and peripheral views, Atari mode and a validation test runner.</p>
+                    <div class="project-tags"><span>MOS 6502</span><span>Assembler</span><span>Test runner</span></div>
+                </a>
+                <a href="https://github.com/arcostasi/esp32-javatari-embedded" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top"><span class="project-index">04 / HARDWARE BUILD</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>ESP32 Javatari Embedded</h4>
+                    <p>An Atari 2600 emulator integrated into an Atari CX40 joystick with an ESP32. The README documents the build steps and includes photos.</p>
+                    <div class="project-tags"><span>ESP32</span><span>C++</span><span>Retrocomputing</span></div>
                 </a>
             </div>
-            <div class="projects-footer reveal"><a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-ghost">Browse GitHub <span aria-hidden="true">↗</span></a></div>
+            <div class="projects-footer reveal"><a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-ghost">Browse all repositories <span aria-hidden="true">↗</span></a></div>
         </div>
     </section>
 
@@ -288,14 +301,14 @@ HAL_CAN_AddTxMessage(
                     <span class="tdot tdot-yellow"></span>
                     <span class="tdot tdot-green"></span>
                 </div>
-                <span class="terminal-title">arcostasi@embedded-node:~</span>
+                <span class="terminal-title">arcostasi@ar2labs:~</span>
                 <button id="close-terminal-btn" aria-label="Close terminal">&times;</button>
             </div>
             <div id="terminal-container">
                 <div id="output"></div>
                 <div id="input-line">
                     <span class="prompt"><span class="prompt-user">arcostasi</span><span class="prompt-at">@</span><span
-                            class="prompt-host">embedded-node:~</span><span class="prompt-sign">#</span></span>
+                            class="prompt-host">ar2labs:~</span><span class="prompt-sign">#</span></span>
                     <input type="text" id="command-input" autocomplete="off" spellcheck="false"
                         aria-label="Terminal command input">
                 </div>

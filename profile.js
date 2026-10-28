@@ -21,9 +21,10 @@ const PROFILE = {
     ],
     projects: [
         "─── SELECTED PROJECTS ───────────────────────",
-        "ESP32 Javatari Embedded — Atari 2600 emulator in an Atari CX40 joystick",
-        "AVR8js Electron Playground — AVR8js and Wokwi Elements in Electron",
-        "My Wokwi Projects — Arduino experiments in the Wokwi simulator",
+        "<a href='https://github.com/arcostasi/avr8js-electron-playground' target='_blank' rel='noopener'>AVR8js Electron Playground</a> — offline Arduino simulator; circuit editor, peripherals and smoke checks",
+        "<a href='https://github.com/arcostasi/harbour-rust' target='_blank' rel='noopener'>Harbour Rust</a> — Rust compiler project for CA-Clipper/Harbour compatibility; CI, tests and releases",
+        "<a href='https://github.com/arcostasi/6502-labsim' target='_blank' rel='noopener'>6502 Laboratory Simulator</a> — visual 6502 computer, assembler and validation runner",
+        "<a href='https://github.com/arcostasi/esp32-javatari-embedded' target='_blank' rel='noopener'>ESP32 Javatari Embedded</a> — Atari 2600 emulator integrated into an Atari CX40 joystick",
         "",
         "More at github.com/arcostasi"
     ],
@@ -77,15 +78,15 @@ const PROFILE = {
         "Just kidding. But seriously, nice try."
     ],
     "cat /var/log/syslog": [
-        "Oct 14 09:23:41 embedded-node kernel: [    0.000000] Booting Linux on physical CPU 0x0",
-        "Oct 14 09:23:41 embedded-node kernel: [    0.000000] Linux version 6.5.0-custom (gcc version 13.2.0, GNU ld (GNU Binutils) 2.40)",
-        "Oct 14 09:23:41 embedded-node kernel: [    0.012351] Memory: 1048576K/1048576K available",
-        "Oct 14 09:23:42 embedded-node systemd[1]: Starting CAN interface setup...",
-        "Oct 14 09:23:42 embedded-node slcand[382]: attached ttyUSB0 to can0",
-        "Oct 14 09:23:43 embedded-node kernel: [    1.458921] can: controller area network core",
-        "Oct 14 09:23:43 embedded-node modprobe: FATAL: Module i2c_bcm2835 not found.",
-        "Oct 14 09:23:43 embedded-node kernel: [    2.103856] j1939: SAE J1939 standard interface",
-        "Oct 14 09:24:00 embedded-node user: Compiling kernel mentally while drinking coffee... DONE."
+        "Oct 14 09:23:41 ar2labs kernel: [    0.000000] Booting Linux on physical CPU 0x0",
+        "Oct 14 09:23:41 ar2labs kernel: [    0.000000] Linux version 6.5.0-custom (gcc version 13.2.0, GNU ld (GNU Binutils) 2.40)",
+        "Oct 14 09:23:41 ar2labs kernel: [    0.012351] Memory: 1048576K/1048576K available",
+        "Oct 14 09:23:42 ar2labs systemd[1]: Starting CAN interface setup...",
+        "Oct 14 09:23:42 ar2labs slcand[382]: attached ttyUSB0 to can0",
+        "Oct 14 09:23:43 ar2labs kernel: [    1.458921] can: controller area network core",
+        "Oct 14 09:23:43 ar2labs modprobe: FATAL: Module i2c_bcm2835 not found.",
+        "Oct 14 09:23:43 ar2labs kernel: [    2.103856] j1939: SAE J1939 standard interface",
+        "Oct 14 09:24:00 ar2labs user: Compiling kernel mentally while drinking coffee... DONE."
     ],
     "skills --verbose": [
         "─── PROTOCOL NOTES ──────────────────────────",

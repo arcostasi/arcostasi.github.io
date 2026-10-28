@@ -3,7 +3,7 @@
 // ─── OS STATE & VFS ────────────────────────────────────────────────────────
 let OS_STATE = {
     user: 'arcostasi',
-    host: 'embedded-node',
+    host: 'ar2labs',
     cwd: '/home/arcostasi',
     history: [],
     historyIndex: -1
@@ -24,7 +24,7 @@ const DEFAULT_VFS = {
     },
     '/home/arcostasi/projects': {
         type: 'dir',
-        contents: ['esp32-javatari-embedded.md', 'avr8js-electron-playground.md', 'my-wokwi-projects.md']
+        contents: ['avr8js-electron-playground.md', 'harbour-rust.md', '6502-labsim.md', 'esp32-javatari-embedded.md']
     },
     '/etc': {
         type: 'dir',
@@ -50,9 +50,10 @@ const DEFAULT_VFS = {
     '/etc/motd': { type: 'file', data: ["Welcome to the ARCOS profile shell v1.2", "Type 'help' to explore the profile and book."] },
     '/etc/passwd': { type: 'file', data: ["root:x:0:0:root:/root:/bin/bash", "arcostasi:x:1000:1000:Anderson R. Costa,,,:/home/arcostasi:/bin/bash"] },
     '/var/log/syslog': { type: 'file', data: PROFILE['cat /var/log/syslog'] },
-    '/home/arcostasi/projects/esp32-javatari-embedded.md': { type: 'file', data: ["ESP32 Javatari Embedded", "Atari 2600 emulator in an Atari CX40 joystick with an ESP32.", "https://github.com/arcostasi/esp32-javatari-embedded"] },
-    '/home/arcostasi/projects/avr8js-electron-playground.md': { type: 'file', data: ["AVR8js Electron Playground", "An Electron playground built around AVR8js and Wokwi Elements.", "https://github.com/arcostasi/avr8js-electron-playground"] },
-    '/home/arcostasi/projects/my-wokwi-projects.md': { type: 'file', data: ["My Wokwi Projects", "Arduino experiments prototyped with the Wokwi online simulator.", "https://github.com/arcostasi/my-wokwi-projects"] },
+    '/home/arcostasi/projects/avr8js-electron-playground.md': { type: 'file', data: ["AVR8js Electron Playground", "Offline Arduino simulator with visual circuit editing, live peripherals, diagnostics and performance smoke checks.", "https://github.com/arcostasi/avr8js-electron-playground"] },
+    '/home/arcostasi/projects/harbour-rust.md': { type: 'file', data: ["Harbour Rust", "Rust compiler project for CA-Clipper/Harbour compatibility, with CI, tests, releases and documentation.", "https://github.com/arcostasi/harbour-rust"] },
+    '/home/arcostasi/projects/6502-labsim.md': { type: 'file', data: ["6502 Laboratory Simulator", "Interactive MOS 6502 computer with assembler, live bus visualization and validation test runner.", "https://github.com/arcostasi/6502-labsim"] },
+    '/home/arcostasi/projects/esp32-javatari-embedded.md': { type: 'file', data: ["ESP32 Javatari Embedded", "Atari 2600 emulator integrated into an Atari CX40 joystick with ESP32; build guide and photos.", "https://github.com/arcostasi/esp32-javatari-embedded"] },
     '/dev/ttyUSB0': { type: 'file', data: ["<span style='color: var(--t-red)'>Permission denied</span>"] },
     '/dev/can0': { type: 'file', data: ["<span style='color: var(--t-red)'>Permission denied</span>"] },
     '/dev/null': { type: 'file', data: [] }
@@ -80,6 +81,7 @@ VFS['/home/arcostasi/projects'] = DEFAULT_VFS['/home/arcostasi/projects'];
 for (const path of Object.keys(DEFAULT_VFS)) { if (path.startsWith('/home/arcostasi/projects/')) VFS[path] = DEFAULT_VFS[path]; }
 delete VFS['/home/arcostasi/projects/can_sniffer.c'];
 delete VFS['/home/arcostasi/projects/rtos_demo.h'];
+delete VFS['/home/arcostasi/projects/my-wokwi-projects.md'];
 delete VFS['/home/arcostasi/test.txt'];
 VFS['/home/arcostasi'].contents = VFS['/home/arcostasi'].contents.filter(name => name !== 'test.txt');
 VFS['/var/log/syslog'] = { type: 'file', data: PROFILE['cat /var/log/syslog'] };
