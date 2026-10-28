@@ -4,8 +4,6 @@ const TEXT = {
   en: {
     'meta.title': 'Anderson Costa — Embedded Software and Field Systems',
     'meta.description': 'Anderson Costa has worked in software development since 1997, focusing on firmware, embedded systems, and CAN, J1939, and ISOBUS networks. Author of Fundamentos de CAN, J1939 e ISOBUS.',
-    'profile.alt': 'Illustrated portrait of Anderson Costa',
-    'profile.caption': 'Anderson Costa · Maringá, Brazil',
     'nav.label': 'Primary navigation', 'nav.home': 'Arcostasi — home', 'nav.menu': 'Menu', 'nav.close': 'Close menu',
     'nav.about': 'About', 'nav.book': 'Book', 'nav.projects': 'Projects', 'nav.contact': 'Contact',
     'language.label': 'Language',
@@ -36,8 +34,6 @@ const TEXT = {
   pt: {
     'meta.title': 'Anderson Costa — Software embarcado e sistemas de campo',
     'meta.description': 'Anderson Costa desenvolve software desde 1997, com foco em firmware, sistemas embarcados e redes CAN, J1939 e ISOBUS. Autor de Fundamentos de CAN, J1939 e ISOBUS.',
-    'profile.alt': 'Retrato ilustrado de Anderson Costa',
-    'profile.caption': 'Anderson Costa · Maringá, Brasil',
     'nav.label': 'Navegação principal', 'nav.home': 'Arcostasi — início', 'nav.menu': 'Menu', 'nav.close': 'Fechar menu',
     'nav.about': 'Sobre', 'nav.book': 'Livro', 'nav.projects': 'Projetos', 'nav.contact': 'Contato',
     'language.label': 'Idioma',
@@ -68,8 +64,6 @@ const TEXT = {
   es: {
     'meta.title': 'Anderson Costa — Software embebido y sistemas de campo',
     'meta.description': 'Anderson Costa desarrolla software desde 1997, con foco en firmware, sistemas embebidos y redes CAN, J1939 e ISOBUS. Autor de Fundamentos de CAN, J1939 e ISOBUS.',
-    'profile.alt': 'Retrato ilustrado de Anderson Costa',
-    'profile.caption': 'Anderson Costa · Maringá, Brasil',
     'nav.label': 'Navegación principal', 'nav.home': 'Arcostasi — inicio', 'nav.menu': 'Menú', 'nav.close': 'Cerrar menú',
     'nav.about': 'Perfil', 'nav.book': 'Libro', 'nav.projects': 'Proyectos', 'nav.contact': 'Contacto',
     'language.label': 'Idioma',
