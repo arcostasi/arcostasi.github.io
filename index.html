@@ -1,32 +1,37 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1F2937">
-  <meta name="description" content="Anderson R. Costa é desenvolvedor de software desde 1997, com foco em firmware, sistemas embarcados e redes CAN, J1939 e ISOBUS. Autor de Fundamentos de CAN, J1939 e ISOBUS.">
+  <meta name="description" data-i18n-content="meta.description" content="Anderson R. Costa has worked in software development since 1997, focusing on firmware, embedded systems, and CAN, J1939, and ISOBUS networks. Author of Fundamentos de CAN, J1939 e ISOBUS.">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Anderson R. Costa — Software embarcado e sistemas de campo">
-  <meta property="og:description" content="Firmware, redes veiculares e automação agrícola. Autor de Fundamentos de CAN, J1939 e ISOBUS.">
+  <meta property="og:title" data-i18n-content="meta.title" content="Anderson R. Costa — Embedded Software and Field Systems">
+  <meta property="og:description" data-i18n-content="meta.description" content="Firmware, vehicle networks, and agricultural automation. Author of Fundamentos de CAN, J1939 e ISOBUS.">
   <meta property="og:url" content="https://arcostasi.github.io/">
-  <meta property="og:image" content="https://dobitaocampo.com.br/assets/capa.webp">
-  <meta property="og:image:alt" content="Capa do livro Fundamentos de CAN, J1939 e ISOBUS, de Anderson R. Costa">
-  <title>Anderson R. Costa — Software embarcado e sistemas de campo</title>
+  <meta property="og:image" content="https://arcostasi.github.io/assets/foto-perfil.png">
+  <meta property="og:image:alt" data-i18n-content="profile.alt" content="Illustrated portrait of Anderson R. Costa">
+  <title data-i18n-content="meta.title">Anderson R. Costa — Embedded Software and Field Systems</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="stylesheet" href="style.css?v=2.0">
+  <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
   <header class="topo">
-    <nav class="nav caixa" aria-label="Navegação principal">
-      <a class="marca" href="#inicio" aria-label="Arcostasi — início">arcostasi</a>
-      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav caixa" aria-label="Primary navigation" data-i18n-aria="nav.label">
+      <a class="marca" href="#inicio" aria-label="Arcostasi — home" data-i18n-aria="nav.home">arcostasi</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#livro">Livro</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#sobre" data-i18n="nav.about">About</a></li>
+        <li><a href="#livro" data-i18n="nav.book">Book</a></li>
+        <li><a href="#projetos" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#contato" data-i18n="nav.contact">Contact</a></li>
       </ul>
+      <div class="idiomas" role="group" aria-label="Language" data-i18n-aria="language.label">
+        <button type="button" data-language="en" aria-pressed="true" class="ativo">EN</button>
+        <button type="button" data-language="pt" aria-pressed="false">PT</button>
+        <button type="button" data-language="es" aria-pressed="false">ES</button>
+      </div>
     </nav>
   </header>
 
@@ -34,19 +39,20 @@
     <section class="destaque" aria-labelledby="titulo">
       <div class="caixa destaque-conteudo">
         <div class="destaque-texto">
-          <p class="rotulo">Desenvolvedor de software · Autor técnico</p>
+          <p class="rotulo" data-i18n="hero.kicker">Embedded software developer · Technical author</p>
           <h1 id="titulo">Anderson R. Costa</h1>
-          <p class="subtitulo">Software embarcado para máquinas que trabalham no campo.</p>
-          <p class="lead">Firmware, eletrônica e redes de comunicação para automação agrícola e industrial. Desenvolvedor desde 1997, em Maringá, Paraná.</p>
+          <p class="subtitulo" data-i18n="hero.subtitle">Embedded software for machines at work in the field.</p>
+          <p class="lead" data-i18n="hero.summary">Firmware, electronics, and communication networks for agricultural and industrial automation. Software developer since 1997, based in Maringá, Paraná, Brazil.</p>
           <div class="acoes">
-            <a class="botao primario" href="https://dobitaocampo.com.br/">Conheça o livro <span aria-hidden="true">↗</span></a>
-            <a class="botao contorno" href="#projetos">Projetos selecionados</a>
+            <a class="botao primario" href="https://dobitaocampo.com.br/"><span data-i18n="hero.bookCta">Explore the book</span><span aria-hidden="true">↗</span></a>
+            <a class="botao contorno" href="#projetos" data-i18n="hero.projectsCta">Selected projects</a>
           </div>
           <p class="areas">C / C++ <span>·</span> CAN <span>·</span> SAE J1939 <span>·</span> ISOBUS</p>
         </div>
-        <a class="capa-link" href="https://dobitaocampo.com.br/" aria-label="Visite o site do livro Fundamentos de CAN, J1939 e ISOBUS">
-          <img class="capa" src="assets/capa.webp" width="720" height="1017" alt="Capa do livro Fundamentos de CAN, J1939 e ISOBUS">
-        </a>
+        <figure class="retrato-wrap">
+          <img class="retrato" src="assets/foto-perfil.png" width="1261" height="1223" alt="Illustrated portrait of Anderson R. Costa" data-i18n-alt="profile.alt">
+          <figcaption data-i18n="profile.caption">Anderson R. Costa · Maringá, Brazil</figcaption>
+        </figure>
       </div>
       <svg class="barramento" viewBox="0 0 1440 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <g fill="none" stroke="#52677D" stroke-width="1.5">
@@ -62,13 +68,13 @@
 
     <section class="secao" id="sobre" aria-labelledby="titulo-sobre">
       <div class="caixa">
-        <p class="rotulo">Engenharia aplicada</p>
-        <h2 id="titulo-sobre">Do sinal à máquina.</h2>
-        <p class="chamada">Meu trabalho aproxima firmware, eletrônica e software de aplicação. O foco está em sistemas confiáveis e na comunicação entre tratores, implementos e equipamentos industriais.</p>
-        <div class="trajeto" aria-label="Áreas técnicas">
-          <div><span>01</span><h3>Camada física</h3><p>Sinais diferenciais, barramentos, temporização e diagnóstico com instrumentos.</p></div>
-          <div><span>02</span><h3>Protocolos</h3><p>CAN, SAE J1939 e ISOBUS (ISO 11783), da arbitragem à interpretação das mensagens.</p></div>
-          <div><span>03</span><h3>Sistemas embarcados</h3><p>Firmware em C/C++, microcontroladores, tempo real e integração com o equipamento.</p></div>
+        <p class="rotulo" data-i18n="about.kicker">Engineering in practice</p>
+        <h2 id="titulo-sobre" data-i18n="about.title">From signal to machine.</h2>
+        <p class="chamada" data-i18n="about.summary">My work connects firmware, electronics, and application software. The focus is on reliable systems and communication between tractors, implements, and industrial equipment.</p>
+        <div class="trajeto" aria-label="Technical focus areas" data-i18n-aria="about.areas">
+          <div><span>01</span><h3 data-i18n="about.layerTitle">Physical layer</h3><p data-i18n="about.layerBody">Differential signals, bus timing, and instrument-based diagnostics.</p></div>
+          <div><span>02</span><h3 data-i18n="about.protocolTitle">Protocols</h3><p data-i18n="about.protocolBody">CAN, SAE J1939, and ISOBUS (ISO 11783), from arbitration to message interpretation.</p></div>
+          <div><span>03</span><h3 data-i18n="about.embeddedTitle">Embedded systems</h3><p data-i18n="about.embeddedBody">C/C++ firmware, microcontrollers, real-time software, and equipment integration.</p></div>
         </div>
       </div>
     </section>
@@ -76,42 +82,45 @@
     <section class="secao livro" id="livro" aria-labelledby="titulo-livro">
       <div class="caixa livro-layout">
         <div>
-          <p class="rotulo">Obra técnica · 1ª edição · 2026</p>
+          <p class="rotulo" data-i18n="book.kicker">Technical reference · First edition · 2026</p>
           <h2 id="titulo-livro">Fundamentos de CAN,<br>J1939 e ISOBUS</h2>
-          <p class="livro-subtitulo">Do bit ao diagnóstico em tratores e implementos agrícolas</p>
-          <p>Um percurso prático pelas redes que conectam tratores e implementos: da camada física CAN aos protocolos SAE J1939 e ISOBUS, com exercícios e casos de diagnóstico.</p>
-          <ul class="livro-dados" aria-label="Dados do livro">
-            <li><strong>217</strong><span>páginas</span></li>
-            <li><strong>22</strong><span>capítulos</span></li>
-            <li><strong>112</strong><span>exercícios</span></li>
-            <li><strong>4</strong><span>casos de diagnóstico</span></li>
+          <p class="livro-subtitulo" data-i18n="book.subtitle">From bits to diagnostics in agricultural tractors and implements</p>
+          <p data-i18n="book.summary">A practical guide to the networks that connect tractors and implements: from the CAN physical layer to SAE J1939 and ISOBUS, with exercises and diagnostic case studies.</p>
+          <ul class="livro-dados" aria-label="Book details" data-i18n-aria="book.details">
+            <li><strong>217</strong><span data-i18n="book.pages">pages</span></li>
+            <li><strong>22</strong><span data-i18n="book.chapters">chapters</span></li>
+            <li><strong>112</strong><span data-i18n="book.exercises">exercises</span></li>
+            <li><strong>4</strong><span data-i18n="book.cases">diagnostic cases</span></li>
           </ul>
           <div class="acoes">
-            <a class="botao escuro" href="https://dobitaocampo.com.br/">Visite o site do livro <span aria-hidden="true">↗</span></a>
-            <a class="link-texto" href="https://dobitaocampo.com.br/#amostra">Leia a amostra gratuita</a>
+            <a class="botao escuro" href="https://dobitaocampo.com.br/"><span data-i18n="book.siteCta">Visit the book website</span><span aria-hidden="true">↗</span></a>
+            <a class="link-texto" href="https://dobitaocampo.com.br/#amostra" data-i18n="book.sampleCta">Read a free sample</a>
           </div>
         </div>
+        <a class="livro-capa-link" href="https://dobitaocampo.com.br/" aria-label="Open the official book website" data-i18n-aria="book.coverLink">
+          <img src="assets/capa.webp" width="720" height="1017" loading="lazy" alt="Cover of Fundamentos de CAN, J1939 e ISOBUS" data-i18n-alt="book.coverAlt">
+        </a>
       </div>
     </section>
 
     <section class="secao projetos" id="projetos" aria-labelledby="titulo-projetos">
       <div class="caixa">
         <div class="cabecalho-secao">
-          <div><p class="rotulo">Código em uso</p><h2 id="titulo-projetos">Projetos selecionados</h2></div>
-          <a class="link-texto" href="https://github.com/arcostasi">Todos os repositórios <span aria-hidden="true">↗</span></a>
+          <div><p class="rotulo" data-i18n="projects.kicker">Selected work</p><h2 id="titulo-projetos" data-i18n="projects.title">Projects</h2></div>
+          <a class="link-texto" href="https://github.com/arcostasi"><span data-i18n="projects.all">All repositories</span> <span aria-hidden="true">↗</span></a>
         </div>
         <div class="lista-projetos">
           <article class="projeto">
-            <span class="projeto-numero">01</span><div><h3><a href="https://github.com/ar2labs/torquebus">TorqueBus Studio <span aria-hidden="true">↗</span></a></h3><p>Bancada aberta para redes veiculares: captura CAN, decodificação DBC, diagnósticos, simulação e dashboards.</p></div><p class="projeto-stack">C++23 · Qt · CAN · J1939</p>
+            <span class="projeto-numero">01</span><div><h3><a href="https://github.com/ar2labs/torquebus">TorqueBus Studio <span aria-hidden="true">↗</span></a></h3><p data-i18n="projects.torquebus">An open workbench for automotive networks: CAN capture, DBC decoding, diagnostics, simulation, and dashboards.</p></div><p class="projeto-stack">C++23 · Qt · CAN · J1939</p>
           </article>
           <article class="projeto">
-            <span class="projeto-numero">02</span><div><h3><a href="https://github.com/arcostasi/avr8js-electron-playground">AVR8js Electron Playground <span aria-hidden="true">↗</span></a></h3><p>Simulador offline de Arduino com editor visual de circuitos, periféricos e diagnóstico em tempo real.</p></div><p class="projeto-stack">TypeScript · Electron · AVR</p>
+            <span class="projeto-numero">02</span><div><h3><a href="https://github.com/arcostasi/avr8js-electron-playground">AVR8js Electron Playground <span aria-hidden="true">↗</span></a></h3><p data-i18n="projects.avr">An offline Arduino simulator with a visual circuit editor, peripherals, and real-time diagnostics.</p></div><p class="projeto-stack">TypeScript · Electron · AVR</p>
           </article>
           <article class="projeto">
-            <span class="projeto-numero">03</span><div><h3><a href="https://github.com/arcostasi/harbour-rust">Harbour Rust <span aria-hidden="true">↗</span></a></h3><p>Compilador em Rust voltado à compatibilidade com CA-Clipper e Harbour, com backend em C, testes e integração contínua.</p></div><p class="projeto-stack">Rust · Compiladores · C</p>
+            <span class="projeto-numero">03</span><div><h3><a href="https://github.com/arcostasi/harbour-rust">Harbour Rust <span aria-hidden="true">↗</span></a></h3><p data-i18n="projects.harbour">A Rust compiler project for CA-Clipper and Harbour compatibility, with a C backend, tests, and continuous integration.</p></div><p class="projeto-stack">Rust · Compilers · C</p>
           </article>
           <article class="projeto">
-            <span class="projeto-numero">04</span><div><h3><a href="https://github.com/arcostasi/6502-labsim">6502 Laboratory Simulator <span aria-hidden="true">↗</span></a></h3><p>Computador MOS 6502 interativo com assembler, visualização do barramento e execução de testes.</p></div><p class="projeto-stack">MOS 6502 · Assembly · Simulação</p>
+            <span class="projeto-numero">04</span><div><h3><a href="https://github.com/arcostasi/6502-labsim">6502 Laboratory Simulator <span aria-hidden="true">↗</span></a></h3><p data-i18n="projects.6502">An interactive MOS 6502 computer with an assembler, live bus views, and a test runner.</p></div><p class="projeto-stack" data-i18n="projects.6502stack">MOS 6502 · Assembly · Simulation</p>
           </article>
         </div>
       </div>
@@ -119,17 +128,17 @@
 
     <section class="contato" id="contato" aria-labelledby="titulo-contato">
       <div class="caixa contato-layout">
-        <div><p class="rotulo">Contato</p><h2 id="titulo-contato">Vamos conversar sobre sistemas embarcados.</h2></div>
+        <div><p class="rotulo" data-i18n="contact.kicker">Contact</p><h2 id="titulo-contato" data-i18n="contact.title">Let’s talk embedded systems.</h2></div>
         <div class="contato-links">
           <a href="https://github.com/arcostasi">GitHub <span>github.com/arcostasi ↗</span></a>
           <a href="https://linkedin.com/in/arcostasi">LinkedIn <span>linkedin.com/in/arcostasi ↗</span></a>
-          <a href="https://dobitaocampo.com.br/">Livro <span>dobitaocampo.com.br ↗</span></a>
+          <a href="https://dobitaocampo.com.br/"><span data-i18n="contact.book">Book</span> <span>dobitaocampo.com.br ↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="rodape"><div class="caixa"><span>Anderson R. Costa</span><span>Maringá · Paraná · Brasil</span></div></footer>
-  <script src="profile.js?v=2.0" defer></script>
+  <footer class="rodape"><div class="caixa"><span>Anderson R. Costa</span><span>Maringá · Paraná · Brazil</span></div></footer>
+  <script src="profile.js?v=2.1" defer></script>
 </body>
 </html>
