@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Anderson Costa — Senior Embedded Systems Engineer with 28+ years of experience in low-level development, communication protocols, and agricultural/industrial automation.">
-    <title>Anderson Costa — Senior Embedded Systems Developer</title>
+    <meta name="description" content="Anderson R. Costa is an embedded software developer and author of Fundamentos de CAN, J1939 e ISOBUS, a practical guide to CAN, SAE J1939 and ISOBUS for agricultural machinery.">
+    <meta name="theme-color" content="#080b18">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Anderson R. Costa — Embedded Software Developer &amp; Author">
+    <meta property="og:description" content="Firmware, low-level software and field protocols. Author of Fundamentos de CAN, J1939 e ISOBUS.">
+    <meta property="og:url" content="https://arcostasi.github.io/">
+    <meta property="og:image" content="https://dobitaocampo.com.br/assets/capa.webp">
+    <meta property="og:image:alt" content="Fundamentos de CAN, J1939 e ISOBUS by Anderson R. Costa">
+    <title>Anderson R. Costa — Embedded Software Developer &amp; Author</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
@@ -25,8 +31,9 @@
                     class="logo-bracket">/&gt;</span></a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#book">Book</a></li>
+                <li><a href="#skills">Stack</a></li>
+                <li><a href="#experience">Focus</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -39,169 +46,90 @@
     <!-- HERO -->
     <section id="hero">
         <div class="hero-inner">
-            <div class="hero-tag reveal"><span class="dot dot-green"></span> Available for consulting</div>
-            <h1 class="reveal">Anderson Costa</h1>
-            <h2 class="reveal">Senior Embedded Systems Developer</h2>
-            <p class="hero-desc reveal">Systems programming, communication protocols, and firmware architecture for
-                agricultural &amp; industrial automation. Coding since <strong>1997</strong>.</p>
+            <div class="hero-tag reveal"><span class="dot dot-green"></span> Technical author · book published 2026</div>
+            <h1 class="reveal">Anderson R. Costa</h1>
+            <h2 class="reveal">Embedded Software Developer &amp; Technical Author</h2>
+            <p class="hero-desc reveal">Software developer since <strong>1997</strong>, focused on firmware, electronics and embedded systems for agricultural and industrial automation.</p>
             <div class="hero-meta reveal">
                 <span class="meta-item"><span class="meta-label">Based in</span> Maringá, PR — Brazil</span>
                 <span class="divider">·</span>
-                <span class="meta-item"><span class="meta-label">Speciality</span> ISOBUS · J1939 · CAN</span>
-                <span class="divider">·</span>
-                <span class="meta-item"><span class="meta-label">Experience</span> 28+ years</span>
+                <span class="meta-item"><span class="meta-label">Protocols</span> CAN · SAE J1939 · ISOBUS</span>
             </div>
             <div class="hero-cta reveal">
-                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
-                <a href="https://linkedin.com/in/arcostasi" target="_blank" rel="noopener"
-                    class="btn btn-secondary">LinkedIn</a>
-                <button class="btn btn-ghost" id="hero-terminal-btn"><span class="mono">&gt;_</span> Try the
-                    Terminal</button>
+                <a href="https://dobitaocampo.com.br/" target="_blank" rel="noopener" class="btn btn-primary">Explore the book <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+                <button class="btn btn-ghost" id="hero-terminal-btn"><span class="mono">&gt;_</span> Open terminal</button>
             </div>
         </div>
         <div class="hero-bg-code" aria-hidden="true">
-            <pre class="code-watermark"><span class="cw-kw">void</span> <span class="cw-fn">can_tx_handler</span>() {
-  CAN_TxHeaderTypeDef hdr;
-  hdr.StdId = <span class="cw-str">0x18FEF100</span>;
-  hdr.DLC = <span class="cw-num">8</span>;
-  HAL_CAN_AddTxMessage(
-    &amp;hcan1, &amp;hdr,
-    txData, &amp;mailbox);
-}
+            <pre class="code-watermark"><span class="cw-kw">CAN_TxHeaderTypeDef</span> hdr = {0};
+hdr.<span class="cw-fn">ExtId</span> = <span class="cw-str">0x18FEF100U</span>;
+hdr.IDE = CAN_ID_EXT;
+hdr.DLC = <span class="cw-num">8</span>;
+HAL_CAN_AddTxMessage(
+  &amp;hcan1, &amp;hdr, data, &amp;mailbox);
 
-<span class="cw-kw">void</span> <span class="cw-fn">j1939_parse_pgn</span>(
-  uint32_t pgn,
-  uint8_t *data) {
-  <span class="cw-kw">switch</span>(pgn) {
-    <span class="cw-kw">case</span> PGN_EEC1:
-      eec1.rpm =
-       (data[4]|data[3]&lt;&lt;<span class="cw-num">8</span>) * 0.125f;
-    <span class="cw-kw">break</span>;
-  }
-}</pre>
+<span class="cw-kw">uint16_t</span> raw =
+  ((uint16_t)data[<span class="cw-num">4</span>] &lt;&lt; <span class="cw-num">8</span>) | data[<span class="cw-num">3</span>];
+<span class="cw-kw">float</span> rpm = raw * <span class="cw-num">0.125f</span>;</pre>
         </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
         <div class="section-inner">
-            <div class="section-header reveal"><span class="section-label">01</span>
-                <h3>About</h3>
-            </div>
+            <div class="section-header reveal"><span class="section-label">01</span><h3>About</h3></div>
             <div class="about-grid">
                 <div class="about-text reveal">
-                    <p>I'm a Senior Software Developer with a deep focus on <strong>Embedded Systems</strong> and
-                        software development. My career spans nearly three decades, from the early days of PIC
-                        assembly to modern C/C++ on ARM Cortex-M microcontrollers.</p>
-                    <p>I specialize in <strong>agricultural and industrial automation</strong>, building robust firmware
-                        and communication stacks for environments where reliability is not optional. My work regularly
-                        involves CAN-based protocols at the hardware-software boundary — where bugs have physical
-                        consequences.</p>
-                    <p>When I'm not deep in register-level debugging, I enjoy building open-source simulation tools for
-                        the
-                        embedded community and mentoring developers entering the systems programming world.</p>
+                    <p>I'm a software developer since <strong>1997</strong>, working across software systems, firmware, electronics and embedded systems—primarily in agricultural and industrial automation.</p>
+                    <p>My work connects <strong>C/C++, microcontrollers, real-time software and communication protocols</strong> at the hardware/software boundary. I focus on the path from what happens on the bus to what a machine does in the field.</p>
+                    <p>I brought that perspective together in my technical book, <em>Fundamentos de CAN, J1939 e ISOBUS</em>: a practical route from the physical layer to protocol analysis and diagnosis.</p>
                 </div>
-                <div class="about-stats reveal">
-                    <div class="stat-card"><span class="stat-number">28<span class="stat-plus">+</span></span><span
-                            class="stat-label">Years coding</span></div>
-                    <div class="stat-card"><span class="stat-number">15<span class="stat-plus">+</span></span><span
-                            class="stat-label">Years in embedded</span></div>
-                    <div class="stat-card"><span class="stat-number">30<span class="stat-plus">+</span></span><span
-                            class="stat-label">Repos &amp; contributions</span></div>
-                    <div class="stat-card"><span class="stat-number">&#x221E;</span><span class="stat-label">Coffee
-                            consumed</span></div>
+                <div class="about-profile reveal">
+                    <span class="about-profile-label">AUTHOR PROFILE</span>
+                    <p><strong>Anderson R. Costa</strong><br>Embedded software · firmware · electronics</p>
+                    <p class="about-profile-detail">Maringá, Paraná, Brazil<br>Writing and building for machines that work outdoors.</p>
+                    <div class="about-protocols"><span>CAN</span><span>J1939</span><span>ISOBUS</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS -->
+    <section id="book">
+        <div class="section-inner">
+            <div class="section-header reveal"><span class="section-label">02</span><h3>Published work</h3></div>
+            <div class="book-layout">
+                <a class="book-cover-link reveal" href="https://dobitaocampo.com.br/" target="_blank" rel="noopener" aria-label="Visit the official book website">
+                    <img class="book-cover" src="https://dobitaocampo.com.br/assets/capa.webp" alt="Cover of Fundamentos de CAN, J1939 e ISOBUS by Anderson R. Costa" width="720" height="1017" loading="lazy" decoding="async">
+                </a>
+                <div class="book-copy reveal">
+                    <p class="book-kicker">FIRST EDITION · 2026 · BRAZILIAN PORTUGUESE</p>
+                    <h4>Fundamentos de CAN,<br>J1939 e ISOBUS</h4>
+                    <p class="book-subtitle">Do bit ao diagnóstico em tratores e implementos agrícolas</p>
+                    <p>A step-by-step guide to the networks that connect tractors and implements: CAN fundamentals, SAE J1939, ISOBUS / ISO 11783, and practical fault diagnosis.</p>
+                    <ul class="book-facts">
+                        <li><strong>217</strong><span>pages</span></li>
+                        <li><strong>112</strong><span>exercises with annotated answers</span></li>
+                        <li><strong>4</strong><span>diagnostic case studies</span></li>
+                        <li><strong>22</strong><span>chapters · 4 parts</span></li>
+                    </ul>
+                    <div class="book-actions">
+                        <a class="btn btn-primary" href="https://dobitaocampo.com.br/" target="_blank" rel="noopener">Visit the book site <span aria-hidden="true">↗</span></a>
+                        <a class="book-sample-link" href="https://dobitaocampo.com.br/#amostra" target="_blank" rel="noopener">Read the free sample</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="skills">
         <div class="section-inner">
-            <div class="section-header reveal"><span class="section-label">02</span>
-                <h3>Skills</h3>
-            </div>
+            <div class="section-header reveal"><span class="section-label">03</span><h3>Technical stack</h3></div>
             <div class="skills-grid">
-                <div class="skill-card reveal">
-                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <polyline points="16 18 22 12 16 6" />
-                            <polyline points="8 6 2 12 8 18" />
-                        </svg></div>
-                    <h4>Languages</h4>
-                    <ul>
-                        <li>C / C++ <span class="skill-level">Advanced</span></li>
-                        <li>Python <span class="skill-level">Advanced</span></li>
-                        <li>Node.js <span class="skill-level">Intermediate</span></li>
-                        <li>Shell / Bash <span class="skill-level">Advanced</span></li>
-                        <li>HTML / CSS / JS <span class="skill-level">Intermediate</span></li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <rect x="4" y="4" width="16" height="16" rx="2" />
-                            <rect x="9" y="9" width="6" height="6" />
-                            <line x1="9" y1="2" x2="9" y2="4" />
-                            <line x1="15" y1="2" x2="15" y2="4" />
-                            <line x1="9" y1="20" x2="9" y2="22" />
-                            <line x1="15" y1="20" x2="15" y2="22" />
-                            <line x1="2" y1="9" x2="4" y2="9" />
-                            <line x1="2" y1="15" x2="4" y2="15" />
-                            <line x1="20" y1="9" x2="22" y2="9" />
-                            <line x1="20" y1="15" x2="22" y2="15" />
-                        </svg></div>
-                    <h4>Embedded</h4>
-                    <ul>
-                        <li>Embedded Linux <span class="skill-level">Intermediate</span></li>
-                        <li>FreeRTOS <span class="skill-level">Intermediate</span></li>
-                        <li>Firmware Architecture <span class="skill-level">Advanced</span></li>
-                        <li>HAL / LL / Bare Metal <span class="skill-level">Advanced</span></li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-                        </svg></div>
-                    <h4>Protocols</h4>
-                    <ul>
-                        <li>ISOBUS (ISO 11783) <span class="skill-level">Advanced</span></li>
-                        <li>SAE J1939 <span class="skill-level">Advanced</span></li>
-                        <li>CAN / CANopen <span class="skill-level">Advanced</span></li>
-                        <li>I2C / SPI / UART <span class="skill-level">Advanced</span></li>
-                        <li>LIN / FlexRay / MIL <span class="skill-level">Intermediate</span></li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2" />
-                            <polyline points="8 21 12 17 16 21" />
-                        </svg></div>
-                    <h4>Hardware</h4>
-                    <ul>
-                        <li>ARM Cortex-M</li>
-                        <li>STM32 (F / H / U series)</li>
-                        <li>ESP32 / ESP-IDF</li>
-                        <li>XMC 47XX / 48XX (Infineon)</li>
-                        <li>Atmel AVR / Microchip PIC</li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <path
-                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
-                        </svg></div>
-                    <h4>Tools &amp; Dev</h4>
-                    <ul>
-                        <li>Vector CANoe / CANalyzer</li>
-                        <li>Git / Docker / CMake</li>
-                        <li>PCAN-Explorer / Oscilloscope / Logic Analyzer</li>
-                        <li>VSCode / GCC / Clang / LLVM</li>
-                    </ul>
-                </div>
+                <div class="skill-card reveal"><div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h4>Languages</h4><ul><li>C / C++</li><li>Python scripting</li><li>Shell</li><li>JavaScript / TypeScript</li></ul></div>
+                <div class="skill-card reveal"><div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2m6-2v2m-6 16v2m6-2v2M2 9h2m-2 6h2m16-6h2m-2 6h2"/></svg></div><h4>Embedded systems</h4><ul><li>Firmware architecture</li><li>Real-time applications · FreeRTOS</li><li>Embedded Linux</li><li>Hardware/software integration</li></ul></div>
+                <div class="skill-card reveal"><div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div><h4>Protocols</h4><ul><li>CAN · CANopen</li><li>SAE J1939</li><li>ISOBUS · ISO 11783</li><li>LIN</li></ul></div>
+                <div class="skill-card reveal"><div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4M7 8h10M7 12h6"/></svg></div><h4>Platforms</h4><ul><li>STM32 · HAL / LL</li><li>ESP32</li><li>XMC · Microchip</li><li>ARM Cortex-M</li></ul></div>
+                <div class="skill-card reveal"><div class="skill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h4>Bench &amp; toolchain</h4><ul><li>CAN diagnostics · Vector CANoe</li><li>PCAN-Explorer</li><li>Oscilloscopes · logic analyzers</li><li>Git · CMake · Docker · CI/CD</li></ul></div>
             </div>
         </div>
     </section>
@@ -209,17 +137,15 @@
     <!-- CODE REVIEW SIMULATOR -->
     <section id="code-review">
         <div class="section-inner">
-            <div class="section-header reveal"><span class="section-label">02.5</span>
-                <h3>Code Review</h3>
+            <div class="section-header reveal"><span class="section-label">03.5</span>
+                <h3>Code lab</h3>
             </div>
             <div class="cr-wrapper reveal">
                 <div class="cr-sidebar">
-                    <h4>Simulate a Code Review</h4>
-                    <p>I frequently review PRs addressing race conditions, memory leaks, and architectural flaws in
-                        embedded C/C++ projects.</p>
-                    <p>Click below to reveal a subtle bug in this snippet of C++ code, similar to those found in
-                        multi-threaded firmware stacks.</p>
-                    <button id="btn-run-review" class="btn btn-primary">Run Code Review</button>
+                    <h4>Reason about shared state</h4>
+                    <p>The book connects the wire, frame and systems in the field. This interactive lab explores a related embedded concern: safe ownership of shared data.</p>
+                    <p>Inspect a possible race around a shared sensor buffer and an asynchronous subscriber.</p>
+                    <button id="btn-run-review" class="btn btn-primary">Inspect the code</button>
                 </div>
                 <div class="cr-editor">
                     <div class="cr-window-top">
@@ -253,15 +179,12 @@
                         <div class="cr-comment" id="cr-comment-1">
                             <div class="cr-comment-header">
                                 <span class="cr-reviewer">@arcostasi</span>
-                                <span class="cr-badge">Senior Review</span>
+                                <span class="cr-badge">Code note</span>
                             </div>
-                            <p><strong>Race Condition Risk:</strong> <code>notifySubscribers()</code> is called outside
-                                the mutex lock. Subscribers might start reading <code>sharedBuffer</code> while another
-                                thread modifies it.</p>
+                            <p><strong>Potential race:</strong> <code>notifySubscribers()</code> runs after the mutex is released. If a subscriber reads <code>sharedBuffer</code> asynchronously, another task could overwrite it before the read completes.</p>
                             <div class="cr-suggestion">
-                                <span class="cr-sugg-title">Suggested fix:</span>
-                                Move this inside the lock, or better, pass the data via a thread-safe Queue instead of a
-                                shared buffer to avoid long mutex holds during notifications.
+                                <span class="cr-sugg-title">Safer pattern:</span>
+                                Pass an immutable snapshot or queue item to subscribers. Avoid holding a mutex while invoking callbacks unless their behavior is bounded and explicitly safe.
                             </div>
                         </div>
                     </div>
@@ -270,57 +193,16 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- TECHNICAL FOCUS -->
     <section id="experience">
         <div class="section-inner">
-            <div class="section-header reveal"><span class="section-label">03</span>
-                <h3>Experience</h3>
-            </div>
+            <div class="section-header reveal"><span class="section-label">04</span><h3>From signal to diagnosis</h3></div>
+            <p class="focus-intro reveal">The book follows a clear path through a machine network: start at the wire, build up through the protocols, then diagnose behavior in a trace.</p>
             <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2016 — Present</div>
-                    <div class="timeline-content">
-                        <h4>Senior Embedded Systems Developer</h4>
-                        <span class="timeline-company">Agricultural &amp; Industrial Automation</span>
-                        <p>Leading firmware architecture and protocol stack development for ISOBUS-compliant
-                            agricultural machinery. Designed and implemented ISO 11783 / SAE J1939 communication layers,
-                            device drivers
-                            for CAN-bus peripherals, and field-proven RTOS integrations on ARM Cortex-M platforms.</p>
-                        <div class="timeline-tags">
-                            <span>C/C++</span><span>XMC
-                                47XX</span><span>ISOBUS</span><span>J1939</span><span>STM32</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2008 — 2015</div>
-                    <div class="timeline-content">
-                        <h4>Software Developer</h4>
-                        <span class="timeline-company">Industrial Automation Projects</span>
-                        <p>Developed firmware and communication drivers for industrial control systems. Worked
-                            with Modbus, RS-485, and TCP/UDP networks. Implemented robust HAL layers and bare-metal
-                            drivers
-                            for Microchip and Atmel microcontrollers.</p>
-                        <div class="timeline-tags"><span>C</span><span>Bare
-                                Metal</span><span>RS-485</span><span>Modbus</span><span>Microchip</span></div>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">1997 — 2008</div>
-                    <div class="timeline-content">
-                        <h4>Software Developer</h4>
-                        <span class="timeline-company">General Software Development</span>
-                        <p>Started programming in Clipper and Pascal. Progressively moved through Delphi, C, and
-                            early web technologies. Built desktop applications, database tools, and early embedded
-                            projects — laying the foundation for a deep systems-level career.</p>
-                        <div class="timeline-tags">
-                            <span>C</span><span>Clipper</span><span>Delphi</span><span>Pascal</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-date">PART I · CAN</div><div class="timeline-content"><h4>Start at the physical layer</h4><span class="timeline-company">Differential pair · arbitration · frames · error handling</span><p>Understand dominant and recessive states, termination, bit-by-bit arbitration, the CAN frame, and how errors are detected and contained.</p><div class="timeline-tags"><span>ISO 11898</span><span>11-bit</span><span>29-bit</span></div></div></div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-date">PART II · SAE J1939</div><div class="timeline-content"><h4>Turn identifiers into meaning</h4><span class="timeline-company">PGN · SPN · address claiming · transport</span><p>Break down the 29-bit identifier, calculate PGNs, scale SPN values, follow the 64-bit NAME and Address Claim, and choose between BAM, CMDT, and ETP.</p><div class="timeline-tags"><span>29-bit ID</span><span>PGN / SPN</span><span>DTC</span></div></div></div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-date">PART III · ISOBUS</div><div class="timeline-content"><h4>Connect the implement to the cab</h4><span class="timeline-company">Virtual Terminal · Object Pool · Task Controller · TECU</span><p>Follow the architecture and services that bring implement functions into the operator's terminal, including agricultural task data and auxiliary controls.</p><div class="timeline-tags"><span>ISO 11783</span><span>Virtual Terminal</span><span>Task Controller</span></div></div></div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-date">PART IV · DIAGNOSIS</div><div class="timeline-content"><h4>Move from symptom to cause</h4><span class="timeline-company">Fault codes · captures · field scenarios</span><p>Read DM1, DM2, and DM3; analyze a capture methodically; and work through four integration cases from the observed symptom to a likely cause.</p><div class="timeline-tags"><span>DM messages</span><span>Trace analysis</span><span>4 case studies</span></div></div></div>
             </div>
         </div>
     </section>
@@ -328,82 +210,33 @@
     <!-- PROJECTS -->
     <section id="projects">
         <div class="section-inner">
-            <div class="section-header reveal"><span class="section-label">04</span>
-                <h3>Projects</h3>
-            </div>
+            <div class="section-header reveal"><span class="section-label">05</span><h3>Selected projects</h3></div>
             <div class="projects-grid">
-                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-card-top">
-                        <svg class="project-folder" width="38" height="38" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.2">
-                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
-                        </svg>
-                        <svg class="project-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                            <polyline points="15 3 21 3 21 9" />
-                            <line x1="10" y1="14" x2="21" y2="3" />
-                        </svg>
-                    </div>
-                    <h4>CAN Bus Tools</h4>
-                    <p>Utilities for decoding, monitoring, and simulating CAN traffic. Supports J1939 PGN parsing, DBC
-                        file loading, and live frame inspection over PCAN and SocketCAN adapters.</p>
-                    <div class="project-tags"><span>Python</span><span>C</span><span>CAN</span><span>J1939</span></div>
+                <a href="https://github.com/arcostasi/esp32-javatari-embedded" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top"><span class="project-index">01 / EMULATION</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>ESP32 Javatari Embedded</h4><p>An Atari 2600 emulator built into an Atari CX40 joystick with an ESP32.</p><div class="project-tags"><span>ESP32</span><span>C++</span><span>Embedded</span></div>
                 </a>
-                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-card-top">
-                        <svg class="project-folder" width="38" height="38" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.2">
-                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
-                        </svg>
-                        <svg class="project-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                            <polyline points="15 3 21 3 21 9" />
-                            <line x1="10" y1="14" x2="21" y2="3" />
-                        </svg>
-                    </div>
-                    <h4>Embedded Drivers</h4>
-                    <p>A collection of hardware-agnostic device drivers in C for sensors, displays, and communication
-                        modules. Targets STM32 and ESP32 platforms with HAL and bare-metal variants.</p>
-                    <div class="project-tags"><span>C</span><span>STM32</span><span>ESP32</span><span>HAL</span></div>
+                <a href="https://github.com/arcostasi/avr8js-electron-playground" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top"><span class="project-index">02 / SIMULATION</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>AVR8js Electron Playground</h4><p>An Electron playground built around AVR8js and Wokwi Elements.</p><div class="project-tags"><span>TypeScript</span><span>Electron</span><span>AVR</span></div>
                 </a>
-                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-card-top">
-                        <svg class="project-folder" width="38" height="38" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.2">
-                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
-                        </svg>
-                        <svg class="project-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5">
-                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                            <polyline points="15 3 21 3 21 9" />
-                            <line x1="10" y1="14" x2="21" y2="3" />
-                        </svg>
-                    </div>
-                    <h4>Protocol Implementations</h4>
-                    <p>Experimental J1939 and ISOBUS (ISO 11783) protocol stacks, designed for embedded targets with a
-                        minimal footprint and easy portability across MCU families.</p>
-                    <div class="project-tags"><span>C</span><span>ISOBUS</span><span>J1939</span><span>FreeRTOS</span>
-                    </div>
+                <a href="https://github.com/arcostasi/my-wokwi-projects" target="_blank" rel="noopener" class="project-card reveal">
+                    <div class="project-card-top"><span class="project-index">03 / PROTOTYPING</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <h4>My Wokwi Projects</h4><p>Arduino experiments prototyped with the Wokwi online simulator.</p><div class="project-tags"><span>Arduino</span><span>C++</span><span>Wokwi</span></div>
                 </a>
             </div>
-            <div class="projects-footer reveal">
-                <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-ghost">View all on
-                    GitHub &#x2192;</a>
-            </div>
+            <div class="projects-footer reveal"><a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="btn btn-ghost">Browse GitHub <span aria-hidden="true">↗</span></a></div>
         </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
         <div class="section-inner">
-            <div class="section-header reveal"><span class="section-label">05</span>
+            <div class="section-header reveal"><span class="section-label">06</span>
                 <h3>Contact</h3>
             </div>
             <div class="contact-wrapper reveal">
-                <p class="contact-lead">Interested in working together, discussing embedded systems, or just saying hi?
-                    Reach out through any of the channels below.</p>
+                <p class="contact-lead">For embedded software, protocol and book enquiries, reach out through GitHub, LinkedIn or the official book site.</p>
                 <div class="contact-links">
                     <a href="https://github.com/arcostasi" target="_blank" rel="noopener" class="contact-item">
                         <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -421,6 +254,7 @@
                         <div class="contact-info"><span class="contact-label">LinkedIn</span><span
                                 class="contact-value">linkedin.com/in/arcostasi</span></div>
                     </a>
+                    <a href="https://dobitaocampo.com.br/#empresas" target="_blank" rel="noopener" class="contact-item book-contact"><div class="contact-icon"><span aria-hidden="true">↗</span></div><div class="contact-info"><span class="contact-label">Book &amp; team licensing</span><span class="contact-value">dobitaocampo.com.br</span></div></a>
                 </div>
             </div>
         </div>
@@ -440,7 +274,7 @@
         <div class="footer-inner">
             <span class="nav-logo"><span class="logo-bracket">&lt;</span>arcostasi<span
                     class="logo-bracket">/&gt;</span></span>
-            <p class="footer-copy">Designed &amp; built by Anderson Costa &middot; 2026</p>
+            <p class="footer-copy">Built by Anderson R. Costa &middot; Maringá, Brazil</p>
             <button class="footer-terminal-btn" id="footer-terminal-btn">&gt;_ terminal</button>
         </div>
     </footer>

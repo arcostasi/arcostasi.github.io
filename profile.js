@@ -3,47 +3,63 @@
 // ─── Profile data ────────────────────────────────────────────────────────────
 const PROFILE = {
     whoami: [
-        "Hi, I'm Anderson Costa (Arcostasi).",
-        "Senior Software Developer specializing in Embedded Systems,",
-        "low-level development, and communication protocols for",
-        "agricultural and industrial automation.",
+        "Hi, I'm Anderson R. Costa (Arcostasi).",
+        "Embedded software developer and technical author.",
+        "Working across software, firmware, electronics and embedded systems",
+        "for agricultural and industrial automation.",
         "",
-        "Age: 45 | Coding since: 1997 | Based in: Maringá - PR, Brazil"
+        "Software developer since 1997 | Maringá - PR, Brazil"
     ],
     skills: [
-        "─── TECHNICAL SKILLS ───────────────────────",
-        "Languages : C / C++, Python, Shell, HTML/CSS/JS",
-        "Embedded  : Embedded Linux, FreeRTOS, Firmware arch, HAL/LL",
-        "Protocols : ISOBUS (ISO 11783), SAE J1939, CAN / CANopen, LIN",
-        "Hardware  : STM32, ESP32, XMC, Microchip",
-        "Tools     : Vector CANoe, PCAN-Explorer, Git, Docker, CMake"
+        "─── TECHNICAL STACK ─────────────────────────",
+        "Languages : C / C++, Python, Shell, JavaScript / TypeScript",
+        "Embedded  : Firmware architecture, real-time systems, FreeRTOS",
+        "Platforms : Embedded Linux, STM32, ESP32, XMC, Microchip",
+        "Protocols : CAN / CANopen, SAE J1939, ISOBUS (ISO 11783), LIN",
+        "Bench     : CAN diagnostics, Vector CANoe, PCAN-Explorer",
+        "Tools     : Oscilloscopes, logic analyzers, Git, CMake, Docker, CI/CD"
     ],
     projects: [
-        "─── FEATURED PROJECTS ──────────────────────",
-        "🛰️  CAN Bus Tools      — Utilities for CAN monitoring & J1939 parsing",
-        "⚙️  Embedded Drivers   — Hardware-agnostic drivers for STM32 / ESP32",
-        "🔧 Protocol Impl.     — J1939 / ISOBUS stack experiments and demos",
+        "─── SELECTED PROJECTS ───────────────────────",
+        "ESP32 Javatari Embedded — Atari 2600 emulator in an Atari CX40 joystick",
+        "AVR8js Electron Playground — AVR8js and Wokwi Elements in Electron",
+        "My Wokwi Projects — Arduino experiments in the Wokwi simulator",
         "",
-        "(More projects at github.com/arcostasi)"
+        "More at github.com/arcostasi"
+    ],
+    book: [
+        "─── BOOK ────────────────────────────────────",
+        "Fundamentos de CAN, J1939 e ISOBUS",
+        "Do bit ao diagnóstico em tratores e implementos agrícolas",
+        "Author: Anderson R. Costa | First edition: 2026",
+        "217 pages | 22 chapters | 112 exercises with annotated answers",
+        "4 diagnostic case studies | ISBN 9786502404447",
+        "Formats: Kindle and e-book PDF",
+        "Official site: <a href='https://dobitaocampo.com.br/' target='_blank' rel='noopener'>dobitaocampo.com.br</a>"
     ],
     contact: [
-        "─── CONTACT ────────────────────────────────",
-        "GitHub  : <a href='https://github.com/arcostasi' target='_blank'>https://github.com/arcostasi</a>",
-        "LinkedIn: <a href='https://linkedin.com/in/arcostasi' target='_blank'>https://linkedin.com/in/arcostasi</a>"
+        "─── CONTACT ─────────────────────────────────",
+        "GitHub  : <a href='https://github.com/arcostasi' target='_blank' rel='noopener'>github.com/arcostasi</a>",
+        "LinkedIn: <a href='https://linkedin.com/in/arcostasi' target='_blank' rel='noopener'>linkedin.com/in/arcostasi</a>",
+        "Book    : <a href='https://dobitaocampo.com.br/' target='_blank' rel='noopener'>dobitaocampo.com.br</a>"
     ],
     help: [
-        "ARCOS shell, version 1.0.0(1)-release",
-        "These shell commands are defined internally. Type 'help' to see this list.",
+        "ARCOS profile shell, version 1.2.0",
+        "Type 'help' to see available commands.",
         "Available commands:",
         "  pwd       — Print name of current/working directory",
         "  cd        — Change the shell working directory",
         "  ls        — List directory contents",
-        "  cat       — Concatenate files and print on the standard output",
+        "  cat       — Read a profile file",
         "  vi        — Minimalist text editor",
         "  hexdump   — Display file contents in ASCII, decimal, hex, or octal",
         "  free      — Display amount of free and used memory",
-        "  top       — Display Linux processes",
-        "  whoami    — Print effective user information",
+        "  top       — Display simulated profile processes",
+        "  whoami    — Print profile information",
+        "  skills    — Show the technical stack",
+        "  projects  — List selected public projects",
+        "  book      — Show the published technical book",
+        "  contact   — Show profile links",
         "  clear     — Clear the terminal screen",
         "  help      — Display information about builtin commands",
         "  shutdown  — Halt, power-off or reboot the machine",
@@ -72,32 +88,25 @@ const PROFILE = {
         "Oct 14 09:24:00 embedded-node user: Compiling kernel mentally while drinking coffee... DONE."
     ],
     "skills --verbose": [
-        "root     1234  0.0  0.1  STM32F4          /usr/bin/hal_configuration",
-        "root     1235  2.0  1.4  FreeRTOS         /sbin/task_scheduler -p 5",
-        "user     2090  5.0  3.2  C/C++            /mnt/dev/pointers_and_references",
-        "user     2091 10.0  4.5  Python           /home/arcostasi/scripts/can_decode.py",
-        "user     2100  0.1  0.0  Bash             grep -rn 'TODO' ./project",
-        "system   3000 80.0 50.0  J1939_Stack      [kworker/u4:2-can0]",
-        "system   3001 99.9 90.0  ISOBUS_Virtual   [kthread_iso11783]",
-        "system   4112 10.0  5.0  Hardware_Debug   /opt/oscilloscope/run",
-        "--> WARNING: High CPU usage in [ISOBUS_Virtual]. Engineer is currently optimizing."
+        "─── PROTOCOL NOTES ──────────────────────────",
+        "CAN       : differential signalling, arbitration, frames, error confinement",
+        "SAE J1939 : 29-bit identifiers, PGN / SPN, NAME, Address Claim, transport",
+        "ISOBUS    : Virtual Terminal, Object Pool, Task Controller, TECU",
+        "DIAG      : DM1 / DM2 / DM3, trace analysis, layered fault isolation",
+        "Reference : Fundamentos de CAN, J1939 e ISOBUS · ISBN 9786502404447"
     ]
 };
 
 const BOOT_SEQUENCE = [
-    "U-Boot 2026.04-arcos (Mar 08 2026 - 21:15:00 +0000)",
-    "CPU: ARM Cortex-M7 rev 1 (v7l) @ 480 MHz",
-    "DRAM:  1024 KiB",
-    "Flash: 2048 KiB",
-    "Loading RTOS kernel image... OK",
-    "Booting ARCOS Kernel v1.0.0-release...",
-    "[    0.012351] Memory boundary mapping: 0x20000000 - 0x2003FFFF",
-    "[    0.045012] Initializing Field Protocols...",
-    "[    0.089100] isobus_core: ISO 11783 Stack loaded",
-    "[    0.104230] j1939_stack: SAE J1939 target address claimed",
-    "[    0.150499] can0: bitrate 250000, sample-point 0.875",
-    "[    0.151000] RTOS Scheduler started. 4 tasks active.",
+    "ARCOS profile shell v1.2.0",
+    "Loading /home/arcostasi/resume.txt ... OK",
+    "Loading technical stack ... OK",
+    "Loading selected projects ... OK",
+    "Loading book metadata ... OK",
     "",
-    "Welcome to ARCOS v1.0",
-    "Type 'help' to see available commands."
+    "Author: Anderson R. Costa",
+    "Book: Fundamentos de CAN, J1939 e ISOBUS",
+    "Focus: CAN / SAE J1939 / ISOBUS",
+    "",
+    "Profile ready. Type 'help' to explore."
 ];

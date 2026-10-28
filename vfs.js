@@ -20,11 +20,11 @@ const DEFAULT_VFS = {
     },
     '/home/arcostasi': {
         type: 'dir',
-        contents: ['resume.txt', 'skills.md', 'projects']
+        contents: ['resume.txt', 'skills.md', 'book.txt', 'projects']
     },
     '/home/arcostasi/projects': {
         type: 'dir',
-        contents: ['can_sniffer.c', 'rtos_demo.h']
+        contents: ['esp32-javatari-embedded.md', 'avr8js-electron-playground.md', 'my-wokwi-projects.md']
     },
     '/etc': {
         type: 'dir',
@@ -46,31 +46,13 @@ const DEFAULT_VFS = {
     // Virtual Files
     '/home/arcostasi/resume.txt': { type: 'file', data: PROFILE['whoami'] },
     '/home/arcostasi/skills.md': { type: 'file', data: PROFILE['skills'] },
-    '/etc/motd': { type: 'file', data: ["Welcome to ARCOS v1.0", "Type 'help' to see available commands."] },
-    '/etc/passwd': { type: 'file', data: ["root:x:0:0:root:/root:/bin/bash", "arcostasi:x:1000:1000:Anderson Costa,,,:/home/arcostasi:/bin/bash"] },
+    '/home/arcostasi/book.txt': { type: 'file', data: PROFILE['book'] },
+    '/etc/motd': { type: 'file', data: ["Welcome to the ARCOS profile shell v1.2", "Type 'help' to explore the profile and book."] },
+    '/etc/passwd': { type: 'file', data: ["root:x:0:0:root:/root:/bin/bash", "arcostasi:x:1000:1000:Anderson R. Costa,,,:/home/arcostasi:/bin/bash"] },
     '/var/log/syslog': { type: 'file', data: PROFILE['cat /var/log/syslog'] },
-    '/home/arcostasi/projects/can_sniffer.c': {
-        type: 'file', data: [
-            "// Simple CAN frame sniffer",
-            "#include <linux/can.h>",
-            "#include <linux/can/raw.h>",
-            "int main() {",
-            "    int s = socket(PF_CAN, SOCK_RAW, CAN_RAW);",
-            "    struct can_frame frame;",
-            "    read(s, &frame, sizeof(struct can_frame));",
-            "    return 0;",
-            "}"
-        ]
-    },
-    '/home/arcostasi/projects/rtos_demo.h': {
-        type: 'file', data: [
-            "#ifndef RTOS_DEMO_H",
-            "#define RTOS_DEMO_H",
-            "void vTaskDisplay(void *pvParameters);",
-            "void vTaskSensors(void *pvParameters);",
-            "#endif"
-        ]
-    },
+    '/home/arcostasi/projects/esp32-javatari-embedded.md': { type: 'file', data: ["ESP32 Javatari Embedded", "Atari 2600 emulator in an Atari CX40 joystick with an ESP32.", "https://github.com/arcostasi/esp32-javatari-embedded"] },
+    '/home/arcostasi/projects/avr8js-electron-playground.md': { type: 'file', data: ["AVR8js Electron Playground", "An Electron playground built around AVR8js and Wokwi Elements.", "https://github.com/arcostasi/avr8js-electron-playground"] },
+    '/home/arcostasi/projects/my-wokwi-projects.md': { type: 'file', data: ["My Wokwi Projects", "Arduino experiments prototyped with the Wokwi online simulator.", "https://github.com/arcostasi/my-wokwi-projects"] },
     '/dev/ttyUSB0': { type: 'file', data: ["<span style='color: var(--t-red)'>Permission denied</span>"] },
     '/dev/can0': { type: 'file', data: ["<span style='color: var(--t-red)'>Permission denied</span>"] },
     '/dev/null': { type: 'file', data: [] }
@@ -92,13 +74,16 @@ try {
 // Always ensure core profile files are up to date from profile.js
 VFS['/home/arcostasi/resume.txt'] = { type: 'file', data: PROFILE['whoami'] };
 VFS['/home/arcostasi/skills.md'] = { type: 'file', data: PROFILE['skills'] };
+VFS['/home/arcostasi/book.txt'] = { type: 'file', data: PROFILE['book'] };
+if (!VFS['/home/arcostasi'].contents.includes('book.txt')) VFS['/home/arcostasi'].contents.push('book.txt');
+VFS['/home/arcostasi/projects'] = DEFAULT_VFS['/home/arcostasi/projects'];
+for (const path of Object.keys(DEFAULT_VFS)) { if (path.startsWith('/home/arcostasi/projects/')) VFS[path] = DEFAULT_VFS[path]; }
+delete VFS['/home/arcostasi/projects/can_sniffer.c'];
+delete VFS['/home/arcostasi/projects/rtos_demo.h'];
+delete VFS['/home/arcostasi/test.txt'];
+VFS['/home/arcostasi'].contents = VFS['/home/arcostasi'].contents.filter(name => name !== 'test.txt');
 VFS['/var/log/syslog'] = { type: 'file', data: PROFILE['cat /var/log/syslog'] };
 
-// Requested file modification
-VFS['/home/arcostasi/test.txt'] = { type: 'file', data: ["Hello World!!!"] };
-if (!VFS['/home/arcostasi'].contents.includes('test.txt')) {
-    VFS['/home/arcostasi'].contents.push('test.txt');
-}
 
 function syncFileSystem() {
     try {
